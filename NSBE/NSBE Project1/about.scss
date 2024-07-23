@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+$drkgrn: darkolivegreen;
+$drkgry: darkslategrey;
+$ddgblu: dodgerblue;
+$drkblu: darkblue;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Josefin Sans", sans-serif;
+
+}
+
+body{
+    background: #f3f5f9;
+    background-image: url("nsbe_icon_trans.png");
+    background-repeat: no-repeat;
+    background-position: 60% 20%;
+    background-size: 500px 500px;
+    background-attachment: fixed;
+}
+
+
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+.list{
+    list-style-type: none;
+}
+
+.bottom_list{
+    list-style-type: none;
+}
+
+.sidebar{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #fff;
+    padding: 30px 0;
+}
+
+.sidebar > .sidebar-header{
+    margin-bottom: 30px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+
+    img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+}
+
+.sidebar ul > li{
+    padding: 15px;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.sidebar ul > li:hover{
+    background: #1434A4;
+    border-radius: 20px;
+    
+    a{
+        color: #FFD700;
+    }
+    img {
+        -webkit-filter: invert(1);
+        filter: invert(1);
+        }
+    
+}
+
+.sidebar ul > li > div{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul > li > div >  a{
+    color: black;
+}
+.sidebar ul > li > a{
+    color: black;
+}
+
+.sidebar ul > li > div > span > img{
+    width: auto;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/*For the log out button*/
+.bottom_list{
+    position: absolute;
+    bottom: 10px;
+}
+
+/*For the Content*/
+
+.content{
+    background:rgba(243, 245, 249, 0.6);
+    width: 100%;
+    height: 100%;
+    margin-left: 200px;
+    padding: 30px;
+    overflow-y: auto;
+    position: relative;
+    text-align: center;
+}
+
+.content_head{
+    background:rgba(12, 20, 37, 0.39);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid black;
+
+}
+.content_subhead{
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+}
+.content_container{
+    text-align: left;
+    margin-top: 20px;
+    width: 90%;
+    height: 100%;
+}
+
+.mcneese{
+    text-align: left;
+    margin-top: 20px;
+    width: 90%;
+    height: 100%;
+}
+
+.mcneese > div{
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.content_container > div{
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.img_cont{
+    width: 750px;
+    height: 450px;
+    position: relative;
+    background:rgba(12, 20, 37, 0.39);
+}
+
+.img_cont > img{
+    width: 700px;
+    height: 400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    border: 1px solid black;
+}
+
+footer a:hover{
+    padding: 15px;
+    background: #1434A4;
+    border-radius: 20px;
+    color: #FFD700;   
+    
+}

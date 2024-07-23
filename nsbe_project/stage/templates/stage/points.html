@@ -1,0 +1,76 @@
+{% extends "stage/base.html" %}
+{% load static%}
+{% block style %}
+    <link rel="stylesheet" type="text/css"   href="{% static 'stage/point_page.css'%}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{% endblock style%}
+ 
+{% block name %}
+ 
+ 
+    <h1>Points <i class='bx bx-trophy' style='color:#ffd700'  ></i> </h1>
+    <div class = "allbox">    
+        <div class="box1">
+            <h2> Total Point Earned</h2>
+                    <div class="number">
+                        <p>{{user.username}}</p>
+                    </div>
+        </div>
+        <div class="box2">
+            <h2> Total Events Attended</h2>
+            <div class="number">
+                <p>3</p>
+            </div>
+        </div>
+    </div>
+   
+    <div class="activity">
+        <div class = "history">
+            <h1 style="font-size: larger; text-decoration: solid">  Event History<span><i class='bx bx-history'></i></span></h1>
+            <div class = "containevent">
+                {% for post in posts %}
+                    <div class="event1">
+                        {% if post.points < 10 %}
+                            <h2 style = "color:green; font-size: 35px"> &nbsp;+{{ post.points }} </h2>
+                        {% else %}
+                            <h2 style = "color:green; font-size: 35px"> +{{ post.points }} </h2>
+                        {% endif %}
+                        <h2 style = "color:black; font-size: 15px"> {{ post.date_event|date:"F d, Y" }} <br>You attended {{ post.event }} </h2>
+                       
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="subBody">
+            <div class="table ">
+                <section class = "table_header">
+                    <h1 style="font-size: larger; text-decoration: solid; color: green; transform: translateY(70%)"> Points Ranking </h1>
+                   
+                </section>
+                <section class = "table_body">
+                    <table>
+                        <tbody>
+                            {% for user in members %}
+                            <tr>
+                                <td> {{ forloop.counter }} </td>
+                                <!-- "{{ post.author.profile.image.url }}" -->
+                                <td><img src = "{{ member.profile.image.url }}" alt =""> {{user.fname}} </td>
+                                <td style = "font-size:large; text-decoration:solid; color: green;" > {{user.pointsum}} </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+       
+    </div>
+ 
+                 
+</body>
+{% endblock %}
+ 
+
+
+
+

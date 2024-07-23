@@ -1,0 +1,14 @@
+{% extends "stage/base.html" %}
+{% block name %}
+<h1>Profile</h1><br/>
+
+{%  for item in all %}
+    <h2>{{ item.fname }}  {{  item.lname }}</h2><br/>
+    <p> Email: {{ item.email }}</p><br/>
+    <p> ID Number: {{ item.id_number }}</p><br/>
+    <p> LinkedIn: {{ item.linkedIn }}</p><br/>
+    <p> Phone Number: {{ item.phone }}</p><br/>
+    <p> Major: {{ item.major }}</p><br/><br/><hr/><br/>
+{% endfor %}
+
+{% endblock name %}

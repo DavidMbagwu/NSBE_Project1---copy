@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+$drkgrn: darkolivegreen;
+$drkgry: darkslategrey;
+$ddgblu: dodgerblue;
+$drkblu: darkblue;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Josefin Sans", sans-serif;
+
+}
+
+body{
+    background: #f3f5f9;
+    background-image: url(MSUHorseRider_blue.png);
+    background-repeat: no-repeat;
+    background-position: 60% -30%;
+    background-size: 500px 500px;
+}

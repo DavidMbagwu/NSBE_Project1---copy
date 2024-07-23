@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8" />
+    <link rel="stylesheet" type="text/css"  href="{% static 'stage/signup.css' %}">
+    <title>SIGN UP PAGE</title>
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Sign Up</h1>
+        <form method="POST" action="{% url 'stage-signup' %}">
+            {% csrf_token %}
+
+            {% for error_message in error_messages %}
+            <div>
+                <ul>
+                    <li>{{ error_message }}</li>
+                </ul>
+            </div>
+            {% endfor %}
+
+            <div>
+                {{ form }}
+            </div>
+            <div class="input-box">
+                <input type="submit" value="Submit" placeholder="Submit">
+            </div>
+        </form>
+            
+
+
+            <p class="already">Already have an account? <a href="{%  url 'stage-login' %}">Login</a></p>
+   
+</body>
+</html>
+

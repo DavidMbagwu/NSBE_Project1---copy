@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    background: #f3f5f9;
+    background-image: url(MSUHorseRider_blue.png);
+    background-repeat: no-repeat;
+    background-position: 50% 30%;
+    background-size: 600px 600px;
+    
+}
+
+.wrapper {
+    width: 360PX;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+}
+
+.input-box{
+    color: black;
+}
+
+h1{
+    text-align: center;
+    color: rgb(1, 1, 10);
+}
+
+/* h2, h3{
+    text-align: left;
+    font-size: 15px;
+    color: rgb(1, 1, 10);
+} */
+
+form{
+    width: 300px;
+    margin-left:10px;
+}
+
+form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid rgb(248, 234, 49) ;
+    border-radius: 50px;
+}
+
+form input::placeholder {
+    color: black;
+}
+
+
+input[type="button"]{
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 8px;
+    background-color: rgb(253, 233, 15);
+    color: rgb(2, 16, 28);
+    font-size: 18px;
+}
+
+.already{
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+input[type="checkbox"]{
+    text-align: center;
+    width: 20x;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: rgb(1, 1, 10);
+}
+
+.dropdown button{
+    width: 290px;
+    margin-left: 8px;
+    margin-top: 20px;
+    /* border-radius: 50px; */
+    background-color: #0818A8;	
+    color: #ffd700;
+    font-size: 15px;
+    padding:10px 15px ;
+    cursor: pointer;
+}
+.dropdown a{
+   display:block;
+   color: black; 
+   text-decoration: none;
+   padding: 10px 15px;
+
+}
+
+.dropdown i{
+    transform: translateX(90%);
+    color: white;
+    font-size: 10px;
+}
+
+.dropdown .content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 286px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-left: 10px;
+
+}
+.dropdown:hover .content{
+    display: block;
+}
+.dropdown:hover button{
+    background-color: white;
+    border-color: #0818A8;
+}
+.dropdown a:hover{
+    background-color: #0437F2;
+}
