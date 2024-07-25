@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from . import choices
 from django.core.exceptions import ValidationError
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -10,8 +11,6 @@ from django.core.exceptions import ValidationError
 # python manage.py migrate --run-syncdb (for clearing and refreshin database changes which usually lead to 'Coloumn not found' errors)
 
 class Member(AbstractUser):
-    #first_name = models.CharField(max_length=64, blank=True, null=True)
-    #last_name = models.CharField(max_length=64, blank=True, null=True)
     mcneese_id = models.CharField( max_length=9,editable=True, unique=True, blank=False)
     linkedin = models.URLField(max_length=50, default='http://www.linkedin.com')
     pointsum = models.IntegerField(blank = True, null=True)
@@ -56,3 +55,25 @@ class Post(models.Model):
 
     def __str__(self):
         return self.event
+
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    description = models.TextField()
+    location = models.CharField(max_length=300)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    attendees = models.ManyToManyField(Member, related_name='events_attending', blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-start_time']

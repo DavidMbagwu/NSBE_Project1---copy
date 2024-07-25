@@ -11,36 +11,36 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
+
+# # Initialize environment variables
+env = environ.Env()
+
+# # Reading .env file
+env.read_env(env_file=str(Path(__file__).resolve().parent.parent / ".env"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lo=f%zdflhdk2^(dw_s*i=736_(&q4fdvl&kuc+kh*(17k1lu&'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = []
-
-# Admin Details:
-# Username: DavidMbagwu
-# Email: davidmbagwu2359@gmail.com
-# Password: june262005
-
-#username = 'Dubem'
-#password = 'DDD45excel'
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'stage.apps.StageConfig',
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -60,10 +60,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nsbe_project.urls'
 
+# Add the path to the React build files
+STATICFILES_DIRS = [
+    BASE_DIR / "stage/static",
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'stage/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +141,15 @@ AUTH_USER_MODEL = "stage.Member"
 
 # So that users will be redirected here on logout
 LOGOUT_REDIRECT_URL = "login/"
+
+# Forgot password link wasn't working
+LOGIN_URL = "stage-login"
+
+# Email settings
+EMAIL_BACKEND = 'stage.backends.email_backend.StageEmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')

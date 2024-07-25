@@ -1,11 +1,15 @@
 from django.shortcuts import render, reverse, redirect
-from .models import Member
-from .models import Post
+from .models import Event, Member, Post
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError, connection
 from django.http import HttpResponseRedirect
 from .forms import MemberSignUpForm
+
+from rest_framework import generics
+from .serializers import EventSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # Create your views here.
 def index(request):
@@ -118,3 +122,19 @@ def adminOnly(request):
         'posts': Post.objects.all(),
     }
     return render(request, 'stage/adminOnly.html', context)
+
+class EventDetail(generics.RetrieveAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+    lookup_field = 'slug'
+
+@api_view(["GET"])
+def events_by_type(request, event_type):
+    if event_type == "upcoming":
+        events = Event.objects.filter(is_upcoming=True)
+    else:
+        events = Event.objects.filter(is_upcoming=False)
+
+    events = events.order_by("-end")
+    serializer = EventSerializer(events, many=True)
+    return Response(serializer.data)
