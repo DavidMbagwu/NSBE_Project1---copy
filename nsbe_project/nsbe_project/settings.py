@@ -136,3 +136,8 @@ AUTH_USER_MODEL = "stage.Member"
 
 # So that users will be redirected here on logout
 LOGOUT_REDIRECT_URL = "login/"
+
+AUTHENTICATION_BACKENDS = [
+    'stage.auth_backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default backend as a fallback
+]

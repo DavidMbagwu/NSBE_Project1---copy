@@ -10,19 +10,23 @@
 </head>
 
 <body>
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
     <div class="wrapper">
         <form  method="post" action ="{%  url 'stage-login' %}">
             {% csrf_token %}
             <h1> Login </h1>
             <div class = "input-box">
-                <input type="text" placeholder="Username" name="username"
+                <input type="email" placeholder="Email Address" name="email"
                 required>
                <span><i class='bx bxs-user'></i></span> 
             </div>
             
             <div class = "input-box">
-                <input type="password" placeholder="Password" name="password" required>"
-                required>
+                <input type="password" placeholder="Password" name="password" required>
+                
                 <span><i class='bx bxs-lock-alt'></i></span> 
             </div>
 

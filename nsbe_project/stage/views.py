@@ -38,19 +38,18 @@ def profile(request):
 
 def login_view(request):
     if request.method == "POST":
-        mcneese_id = request.POST.get("mcneese_id")
-        password = request.POST.get("password")
+        email = request.POST["email"]
+        password = request.POST["password"]
 
         # I made sure username is the same as mcneese_id!!!
-        member = authenticate(request, username=mcneese_id, password=password)
+        member = authenticate(request, username=email, password=password)
 
         if member is not None:
-            print(member)
-            login(request, user=member)
+            login(request, member)
             return HttpResponseRedirect(reverse("stage-index"))
 
         else:
-            print("Member not found")
+           
             return render(
                 request,
                 "stage/login.html",
