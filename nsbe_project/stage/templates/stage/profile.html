@@ -1,4 +1,5 @@
 {% extends "stage/base.html" %}
+{% load static %}
 {% block name %}
 <h1>Profile</h1><br/>
 
@@ -8,6 +9,9 @@
     <p> ID Number: {{ item.mcneese_id }}</p><br/>
     <p> LinkedIn: {{ item.linkedin }}</p><br/>
     <p> Phone Number: {{ item.phone }}</p><br/>
+    <p> Profile Image:</p>
+    <img src= "{{ item.avatar.images.url }}" alt="{{ item.avatar }}" width="150" height="150"><br/>   
+    <br/>
     <p> Major: {{ item.major }}</p><br/><br/><hr/><br/>
 {% endfor %}
 
