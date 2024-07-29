@@ -10,7 +10,7 @@
     <p> LinkedIn: {{ item.linkedin }}</p><br/>
     <p> Phone Number: {{ item.phone }}</p><br/>
     <p> Profile Image:</p>
-    <img src="{{ MEDIA_URL }}{{ item.avatar }}" alt="{{ item.avatar }}" width="150" height="150"><br/>   
+    <img src="{{ MEDIA_URL }}{{ item.avatar }}" alt="{{ item.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/>   
     <br/>
     <p> Major: {{ item.major }}</p><br/><br/><hr/><br/>
 {% endfor %}
