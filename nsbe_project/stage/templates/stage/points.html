@@ -54,7 +54,7 @@
                             <tr>
                                 <td> {{ forloop.counter }} </td>
                                 <!-- "{{ post.author.profile.image.url }}" -->
-                                <td><img src = "{{ member.profile.image.url }}" alt =""> {{user.fname}} </td>
+                                <td><img src = "{{ MEDIA_URL }}{{ user.avatar }}" alt =""> {{ user.first_name }}  {{  user.last_name }} </td>
                                 <td style = "font-size:large; text-decoration:solid; color: green;" > {{user.pointsum}} </td>
                             </tr>
                             {% endfor %}
