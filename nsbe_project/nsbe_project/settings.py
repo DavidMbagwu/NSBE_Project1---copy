@@ -148,5 +148,5 @@ AUTHENTICATION_BACKENDS = [
 
 # Create a Media Directory to store media files
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "nsbe_project", "media")
-MEDIA_URL = '/nsbe_project/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'

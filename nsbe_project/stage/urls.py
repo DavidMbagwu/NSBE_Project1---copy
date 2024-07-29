@@ -4,6 +4,8 @@ from . import views
 # Serve static files when in DEBUG mode
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import re_path
+from django.views.static import serve
 
 urlpatterns = [
     path('', views.index, name='stage-index'),
@@ -19,6 +21,3 @@ urlpatterns = [
     path('logout/', views.logout_view, name='stage-logout'),
     path('adminOnly/', views.adminOnly, name='stage-adminOnly'),
 ]
-
-if settings.DEBUG is True:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
