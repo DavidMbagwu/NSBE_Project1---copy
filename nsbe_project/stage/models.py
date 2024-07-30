@@ -11,7 +11,7 @@ from django.utils.text import slugify
 # python manage.py migrate --run-syncdb (for clearing and refreshin database changes which usually lead to 'Coloumn not found' errors)
 
 class Member(AbstractUser):
-    mcneese_id = models.CharField( max_length=9,editable=True, unique=True, blank=False)
+    mcneese_id = models.CharField(max_length=9, editable=True, unique=True, blank=False)
     linkedin = models.URLField(max_length=50, default='http://www.linkedin.com')
     pointsum = models.IntegerField(blank = True, null=True)
     major = models.CharField(max_length=200, choices=choices.MAJOR_CHOICES)
@@ -56,6 +56,16 @@ class Post(models.Model):
     def __str__(self):
         return self.event
 
+class EventManager(models.Manager):
+    def upcoming(self):
+        now = timezone.now()
+        return self.filter(end_time__gte=now).order_by("-end_time")
+    
+    def past(self):
+        now = timezone.now()
+        return self.filter(end_time__lt=now).order_by("-end_time")
+    
+
 class Event(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
@@ -67,6 +77,8 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     attendees = models.ManyToManyField(Member, related_name='events_attending', blank=True)
 
+    objects = EventManager()
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -77,3 +89,4 @@ class Event(models.Model):
 
     class Meta:
         ordering = ['-start_time']
+        

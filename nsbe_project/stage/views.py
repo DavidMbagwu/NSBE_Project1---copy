@@ -6,7 +6,7 @@ from django.db import IntegrityError, connection
 from django.http import HttpResponseRedirect
 from .forms import MemberSignUpForm
 
-from rest_framework import generics
+from rest_framework import generics, status
 from .serializers import EventSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -123,18 +123,37 @@ def adminOnly(request):
     }
     return render(request, 'stage/adminOnly.html', context)
 
-class EventDetail(generics.RetrieveAPIView):
+class EventDetailView(generics.RetrieveAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     lookup_field = 'slug'
 
-@api_view(["GET"])
-def events_by_type(request, event_type):
-    if event_type == "upcoming":
-        events = Event.objects.filter(is_upcoming=True)
-    else:
-        events = Event.objects.filter(is_upcoming=False)
+    def get(self, request, *args, **kwargs):
+        slug = self.kwargs.get(self.lookup_field)
+        try:
+            event = Event.objects.get(slug=slug)
+            serializer = self.get_serializer(event)
+            return Response(serializer.data)
+        except Event.DoesNotExist:
+            return Response({"error": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    events = events.order_by("-end")
-    serializer = EventSerializer(events, many=True)
-    return Response(serializer.data)
+
+class EventsListView(generics.ListAPIView):
+    serializer_class = EventSerializer
+
+    def get_queryset(self):
+        event_type = self.kwargs.get("event_type")
+        if event_type == "upcoming":
+            return Event.objects.upcoming()
+        elif event_type == "past":
+            return Event.objects.past()
+        return Event.objects.none()
+    
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+
+        if queryset.exists():
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({"error": "No events found"}, status=status.HTTP_404_NOT_FOUND)

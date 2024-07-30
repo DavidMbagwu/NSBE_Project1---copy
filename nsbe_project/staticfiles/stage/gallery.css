@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+body {
+  background: #e1e1e1;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #e1e1e1;
+  text-align: center;
+  margin-top: 40px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.container .heading {
+  width: 50%;
+  padding-bottom: 50px;
+}
+
+.container .heading > h3 {
+  font-size: 3em;
+  font-weight: 700;
+  border-bottom: 3px solid #222;
+  padding-bottom: 30px;
+}
+
+.container .heading > h3 > span {
+  font-weight: 100;
+}
+
+.container .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .box .img-box {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 32.5%;
+}
+
+.container .box .img-box:nth-child(1) {
+  display: block;
+}
+
+.container .box .img-box:nth-child(2) {
+  display: block;
+}
+
+.container .box .img-box:nth-child(3) {
+  display: block;
+}
+
+.container .box .img-box > a > img {
+  width: 100%;
+  padding-bottom: 15px;
+  border-radius: 10px;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}
+
+.container .box .img-box > a > img:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.button {
+  margin-top: 40px;
+  margin-bottom: 70px;
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  position: fixed;
+  right: 3%;
+  bottom: 0;
+  width: 100px;
+}
+.button a {
+  color: blueviolet;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back_button {
+  margin-top: 40px;
+  margin-bottom: 70px;
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  position: fixed;
+  left: 3%;
+  bottom: 0;
+  width: 100px;
+}
+.back_button a {
+  color: blueviolet;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
