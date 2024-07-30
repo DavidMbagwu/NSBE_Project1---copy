@@ -3,8 +3,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, List, ListItem, ListItemText, Stack } from '@mui/material';
 import { Home, Folder, Star, CalendarToday, Person, ExitToApp, Help, Info } from '@mui/icons-material';
 import './Layout.css'; 
-
-// Import the logo image
 import nsbe5g from './static/stage/logo/nsbe5g.png';
 
 const Layout = ({ children }) => {
@@ -16,28 +14,28 @@ const Layout = ({ children }) => {
         </Box>
         <List className="list">
           <ListItem>
-            <RouterLink to="/" className="link">
+            <a href="http://127.0.0.1:8000/stage/" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <Home />
                 <ListItemText primary="Home" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
           <ListItem>
-            <RouterLink to="/directory" className="link">
+            <a href="http://127.0.0.1:8000/stage/directory" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <Folder />
                 <ListItemText primary="Directory" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
           <ListItem>
-            <RouterLink to="/points" className="link">
+            <a href="http://127.0.0.1:8000/stage/points" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <Star />
                 <ListItemText primary="Points" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
           <ListItem>
             <RouterLink to="/events" className="link">
@@ -48,38 +46,38 @@ const Layout = ({ children }) => {
             </RouterLink>
           </ListItem>
           <ListItem>
-            <RouterLink to="/profile" className="link">
+            <a href="http://127.0.0.1:8000/stage/profile" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <Person />
                 <ListItemText primary="Profile" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
         </List>
-        <List className="bottom_list">
+        <List className="bottom_list" sx={{ marginTop: '200px' }}>
           <ListItem>
-            <RouterLink to="/logout" className="link">
+            <a href="http://127.0.0.1:8000/stage/logout" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <ExitToApp />
                 <ListItemText primary="Log Out" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
           <ListItem>
-            <RouterLink to="/help" className="link">
+            <a href="http://127.0.0.1:8000/stage/help" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <Help />
                 <ListItemText primary="Help" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
           <ListItem>
-            <RouterLink to="/about" className="link">
+            <a href="http://127.0.0.1:8000/stage/about" className="link">
               <Stack alignItems="center" direction="row" spacing={2}>
                 <Info />
                 <ListItemText primary="About" />
               </Stack>
-            </RouterLink>
+            </a>
           </ListItem>
         </List>
       </Box>

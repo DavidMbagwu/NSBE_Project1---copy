@@ -33,15 +33,15 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=True)
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
-    'rest_framework',
+    'rest_framework', # For developing API views
     'stage.apps.StageConfig',
     'django.contrib.admin',
+    'corsheaders', # For handling the connection with React
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # For handling the connection with React
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -62,9 +62,21 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nsbe_project.urls'
 
-CORS_ALLOWED_ORIGINS = [
+# CORS
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    'http://127.0.0.1',
 ]
+CORS_ALLOW_HEADERS = [
+    'authorization',
+    'content-type',
+    'x-csrftoken',
+    'Access-Control-Allow-Origin',
+]
+
 
 # Add the path to the React build files
 STATICFILES_DIRS = [
@@ -163,3 +175,14 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 # Static Files: Django Static & React
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Rest configs
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}

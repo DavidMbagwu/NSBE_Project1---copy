@@ -31,9 +31,12 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), 
          name='password_reset_complete'),
 
-    # API views
-    path('event/<slug:slug>/', EventDetailView.as_view(), name='stage-event-detail'),
-    path('events/<str:event_type>/', EventsListView.as_view(), name='stage-events'),
+     # API views
+     path('event/<slug:slug>/', EventDetailView.as_view(), name='stage-event-detail'),
+     path('events/<str:event_type>/', EventsListView.as_view(), name='stage-events'),
+     path('events/<int:id>/register/', views.register_for_event, name='stage-register-for-event'),
+     path('events/<int:id>/unregister/', views.unregister_from_event, name='stage-unregister-from-event'),
+
 ]
 
 # export NODE_OPTIONS=--openssl-legacy-provider
