@@ -13,13 +13,15 @@
         <div class="box1">
             <h1> Total Point Earned</h1>
                     <div class="number">
-                        <p style="color: green;">{{user.pointsum}}</p>
+                        <p style="color: green;">{{user.event}}</p>
                     </div>
         </div>
         <div class="box2">
             <h2> Total Events Attended</h2>
             <div class="number">
-                <p style="color: green;">3</p>
+            {%for member in memberPosts%}
+                <p style="color: green;">{{member.event}}</p>
+            {% endfor %}
             </div>
         </div>
     </div>
