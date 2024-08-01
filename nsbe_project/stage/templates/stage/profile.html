@@ -14,18 +14,16 @@
         <label for="email">Email*</label>
         <input type="text" default value="{{ user.email }}" name = "email" ><br/>
 
-        <label for="mcneese_id">ID*</label>
-        <input type="text" default value="{{ user.mcneese_id }}" name = "mcneese_id" ><br/>
-        
-        <p> ID Number: {{ user.mcneese_id }}</p><br/>
-        <p> LinkedIn: {{ user.linkedin }}</p><br/>
-        <p> Phone Number: {{ user.phone }}</p><br/>
-        <p> Profile Image:</p>
-        <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/>   
-        <br/>
-        <p> Major: {{ user.major }}</p><br/><br/><hr/><br/>
-    </div>    
-</form>
+{% if user.is_authenticated %}
+<h2>{{ user.first_name }}  {{  user.last_name }}</h2><br/>
+    <p> Email: {{ user.email }}</p><br/>
+    <p> ID Number: {{ user.mcneese_id }}</p><br/>
+    <p> LinkedIn: {{ user.linkedin }}</p><br/>
+    <p> Phone Number: {{ user.phone }}</p><br/>
+    <p> Profile Image:</p>
+<!--    <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/> -->   
+    <br/>
+    <p> Major: {{ user.major }}</p><br/><br/><hr/><br/>
 
 <!--
 {%  for item in all %}
