@@ -1,7 +1,18 @@
 {% extends "stage/base.html" %}
 {% load static %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css"   href="{% static 'stage/profile.css'%}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{% endblock style%}
+
 {% block name %}
-<h1>Profile</h1><br/>
+<form action =""></form>
+    <h1>Profile</h1><br/>
+    <div class = "input-box">
+        <h2>{{ user.first_name }}  {{  user.last_name }}</h2><br/>
+        <label for="email">Email*</label>
+        <input type="text" default value="{{ user.email }}" name = "email" ><br/>
 
 {% if user.is_authenticated %}
 <h2>{{ user.first_name }}  {{  user.last_name }}</h2><br/>
@@ -10,13 +21,10 @@
     <p> LinkedIn: {{ user.linkedin }}</p><br/>
     <p> Phone Number: {{ user.phone }}</p><br/>
     <p> Profile Image:</p>
-    <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/>   
+<!--    <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/> -->   
     <br/>
     <p> Major: {{ user.major }}</p><br/><br/><hr/><br/>
 
-{% else %}
-    Not signed in.
-{% endif %}
 <!--
 {%  for item in all %}
     <h2>{{ item.first_name }}  {{  item.last_name }}</h2><br/>
