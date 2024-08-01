@@ -26,11 +26,25 @@ def help(request):
     return render(request, 'stage/help.html')
 
 def points(request):
+    user = request.user
+    # Filter posts related to the current user
+
+    member = Member.objects.get(id = user.id)
+    member_posts = member.points.all()
+    events_attended = member.points.count()
+    top_members = Member.objects.all().order_by('-pointsum')[:10]
+
     context = {
         'posts': Post.objects.all(),
         'members': Member.objects.all(),
-    }
+        'memberPosts': member_posts,
+        'events_attended': events_attended ,
+        'top_members': top_members
+        }
     return render(request, 'stage/points.html', context)
+
+# 'points': Member.objects.values_list('points', flat=True).order_by('-points')[:5]  # Fetch top 5 users by points in descending order.
+
 
 def profile(request):
     all_users = Member.objects.all()
