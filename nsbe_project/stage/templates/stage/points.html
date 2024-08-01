@@ -13,15 +13,13 @@
         <div class="box1">
             <h1> Total Point Earned</h1>
                     <div class="number">
-                        <p style="color: green;">{{user.event}}</p>
+                        <p style="color: green;">{{user.pointsum}}</p>
                     </div>
         </div>
         <div class="box2">
             <h2> Total Events Attended</h2>
             <div class="number">
-            {%for member in memberPosts%}
-                <p style="color: green;">{{member.event}}</p>
-            {% endfor %}
+                <p style="color: green;">{{events_attended}}</p>
             </div>
         </div>
     </div>
@@ -30,14 +28,14 @@
         <div class = "history">
             <h1 style="font-size: larger; text-decoration: solid">  Event History<span><i class='bx bx-history'></i></span></h1>
             <div class = "containevent">
-                {% for post in posts %}
+                {% for member in memberPosts %}
                     <div class="event1">
-                        {% if post.points < 10 %}
+                        {% if member.points < 10 %}
                             <h2 style = "color:green; font-size: 35px"> &nbsp;+{{ post.points }} </h2>
                         {% else %}
-                            <h2 style = "color:green; font-size: 35px"> +{{ post.points }} </h2>
+                            <h2 style = "color:green; font-size: 35px"> +{{ member.points }} </h2>
                         {% endif %}
-                        <h2 style = "color:black; font-size: 15px"> {{ post.date_event|date:"F d, Y" }} <br>You attended {{ post.event }} </h2>
+                        <h2 style = "color:black; font-size: 15px"> {{ member.date_event|date:"F d, Y" }} <br>You attended {{ member.event }} </h2>
                        
                     </div>
                 {% endfor %}
@@ -52,12 +50,12 @@
                 <section class = "table_body">
                     <table>
                         <tbody>
-                            {% for user in members %}
+                            {% for member in top_members %}
                             <tr>
                                 <td> {{ forloop.counter }} </td>
                                 <!-- "{{ post.author.profile.image.url }}" -->
-                                <td><img src = "{{ MEDIA_URL }}{{ user.avatar }}" alt =""> {{ user.first_name }}  {{  user.last_name }} </td>
-                                <td style = "font-size:large; text-decoration:solid; color: green;" > {{user.pointsum}} </td>
+                                <td><img src = "{{ MEDIA_URL }}{{ user.avatar }}" alt =""> {{ member.first_name }}  {{  member.last_name }} </td>
+                                <td style = "font-size:large; text-decoration:solid; color: green;" > {{member.pointsum}} </td>
                             </tr>
                             {% endfor %}
                         </tbody>
