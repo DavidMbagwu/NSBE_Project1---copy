@@ -32,7 +32,7 @@ function EventDetail() {
     const isUpcoming = eventStartTime > new Date();
 
     const handleButtonClick = async () => {
-        if (!event.is_member_registed) {
+        if (!event.is_member_registered) {
             const result = await handleRegister(event.id);
             if (result.success) {
                 setEvent({ ...event, is_member_registed: true });

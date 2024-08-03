@@ -31,10 +31,10 @@ function EventsByType() {
             }
         }
         fetchEvents();
-    }, [eventType]);
+    }, [eventType, csrfToken]);
 
     const handleButtonClick = async (event) => {
-        if (!event.is_member_registed) {
+        if (!event.is_member_registered) {
             const result = await handleRegister(event.id);
             if (result.success) {
                 setEvents(events.map(e => e.id === event.id ? {...e, is_member_registed: true } : e));

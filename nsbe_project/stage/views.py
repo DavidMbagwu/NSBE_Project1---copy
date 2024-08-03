@@ -3,7 +3,7 @@ from .models import Event, Member, Post
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError, connection
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from .forms import MemberSignUpForm
 
 from rest_framework import generics, status
@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.db.models import Case, When, Value, BooleanField
+from django.views.decorators.csrf import ensure_csrf_cookie;
 
 # Create your views here.
 def index(request):
@@ -142,7 +143,6 @@ class EventDetailView(generics.RetrieveAPIView):
             return Response({"error": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
 
 
-
 class EventsListView(generics.ListAPIView):
     serializer_class = EventSerializer
     permission_classes = [AllowAny]
@@ -168,7 +168,8 @@ class EventsListView(generics.ListAPIView):
             return Response({"error": "No events found"}, status=status.HTTP_404_NOT_FOUND)
 
 
-# @api_view(["POST"])
+@ensure_csrf_cookie
+@api_view(["POST"])
 # @permission_classes([IsAuthenticated])
 def register_for_event(request, id):
     try:
@@ -185,8 +186,9 @@ def register_for_event(request, id):
     return Response(EventSerializer(event).data, status=status.HTTP_200_OK)
 
 
-# @api_view(["POST"])
-# @permission_classes([IsAuthenticated])
+@ensure_csrf_cookie
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def unregister_from_event(request, id):
     try:
         event = Event.objects.get(id=id)
