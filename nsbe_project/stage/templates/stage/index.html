@@ -8,9 +8,9 @@
 
 {% block name %}
 
-{%  for item in all %}
 
-<h1>Hey, {{ item.first_name }} 👋</h1>
+{% if user.is_authenticated %}
+<h1>Hey, {{ user.first_name }} 👋</h1>
 <div class="content_container">
 
     <div class="content_left">
@@ -161,7 +161,7 @@
 
 </div>
 
-{% endfor %}
+{% endif %}
 
 
 {% endblock name %}

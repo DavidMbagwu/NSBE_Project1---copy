@@ -86,3 +86,27 @@ body{
         text-decoration: none;
     }
 }
+
+#events-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.register {
+    width: calc(33.33% - 40px); /* This allows us to have three boxes horizontally*/
+    height: 200px;
+    box-shadow: 0 .4rem .8rem #0005;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 25px;
+    border-color: gray;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .register {
+        width: 100%; /* Full width on smaller screens */
+    }
+}

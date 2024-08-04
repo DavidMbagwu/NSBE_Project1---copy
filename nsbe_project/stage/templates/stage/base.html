@@ -33,7 +33,7 @@
                 </div></li>
                 <li><div>
                     <span><img src="{% static 'stage/logo/calender_icon.png' %}" alt="events_button"></span>
-                    <a href="http://localhost:3000/events/upcoming">Events</a>
+                    <a href="{% url 'stage-events' %}">Events</a>
                 </div></li>
                 <li><div>
                     <span><img src="{% static 'stage/logo/profile_icon.png' %}" alt="profile_button"></span>
@@ -46,7 +46,7 @@
                     <li>
                         <div>
                             <span><img src="{% static 'stage/logo/log_out.png' %}" alt="log_out_button"></span>
-                            <a href="#">Log Out</a>
+                            <a href="{% url 'stage-logout' %}">Log Out</a>
                         </div>
                     </li>
                     <li><a href="{%  url 'stage-help' %}">Help</a></li>

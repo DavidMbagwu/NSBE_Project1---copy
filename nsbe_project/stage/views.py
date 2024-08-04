@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from .models import Event, Member, Post
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -6,18 +6,13 @@ from django.db import IntegrityError, connection
 from django.http import HttpResponseRedirect, JsonResponse
 from .forms import MemberSignUpForm
 
-from rest_framework import generics, status
-from .serializers import EventSerializer, MemberSerializer
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from django.db.models import Case, When, Value, BooleanField
-from django.views.decorators.csrf import ensure_csrf_cookie;
+from .serializers import EventSerializer
+from rest_framework.decorators import api_view
+from django.core.mail import send_mail 
 
 # Create your views here.
 def index(request):
-    all_users = Member.objects.all()
-    return render(request, 'stage/index.html', {'all': all_users})
+    return render(request, 'stage/index.html')
 
 
 def about(request):
@@ -43,16 +38,17 @@ def profile(request):
     all_users = Member.objects.all()
     return render(request, 'stage/profile.html', {'all': all_users})
 
+
 def login_view(request):
     if request.method == "POST":
         mcneese_email = request.POST.get("mcneese_email")
         password = request.POST.get("password")
-        print(mcneese_email, password)
 
         # I made sure username is the same as mcneese_email!!!
         member = authenticate(request, username=mcneese_email, password=password)
 
         if member is not None:
+            print(member)
             login(request, user=member)
             return HttpResponseRedirect(reverse("stage-index"))
 
@@ -126,79 +122,45 @@ def adminOnly(request):
     }
     return render(request, 'stage/adminOnly.html', context)
 
-
-class EventDetailView(generics.RetrieveAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-    permission_classes = [AllowAny]
-    lookup_field = 'slug'
-
-    def get(self, request, *args, **kwargs):
-        slug = self.kwargs.get(self.lookup_field)
-        try:
-            event = Event.objects.get(slug=slug)
-            serializer = self.get_serializer(event)
-            return Response(serializer.data)
-        except Event.DoesNotExist:
-            return Response({"error": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
-
-
-class EventsListView(generics.ListAPIView):
-    serializer_class = EventSerializer
-    permission_classes = [AllowAny]
-
-    def get_queryset(self):
-        event_type = self.kwargs.get("event_type")
-        if event_type == "upcoming":
-            queryset = Event.objects.upcoming()
-        elif event_type == "past":
-            queryset = Event.objects.past()
-        else:
-            queryset = Event.objects.none()
-        
-        return queryset
-    
-    def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-
-        if queryset.exists():
-            serializer = self.get_serializer(queryset, many=True)
-            return Response(serializer.data)
-        else:
-            return Response({"error": "No events found"}, status=status.HTTP_404_NOT_FOUND)
-
-
-@ensure_csrf_cookie
-@api_view(["POST"])
-# @permission_classes([IsAuthenticated])
-def register_for_event(request, id):
+@api_view(['GET'])
+def get_event(request, event_id):
     try:
-        event = Event.objects.get(id=id)
+        event = Event.objects.get(id=event_id)
+        serializer = EventSerializer(event, context={'request': request})
+        return JsonResponse(serializer.data)
     except Event.DoesNotExist:
-        return Response({"message": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
+        return JsonResponse({'error': 'Event not found'}, status=404)
 
-    member = request.user
+@api_view(['GET'])
+def get_events(request, event_type):
+    if event_type == "past":
+        events = Event.objects.past()
+    else:
+        events = Event.objects.upcoming()
 
-    if member in event.attendees.all():
-        return Response({"message": "Member already registered for this event"}, status=status.HTTP_400_BAD_REQUEST)
+    serializer = EventSerializer(events, many=True, context={'request': request})
+    return JsonResponse({'events': serializer.data})
+
+@api_view(['POST'])
+@login_required
+def register(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    event.attendees.add(request.user)
+
+    # Send confirmation email to the user
+    subject = f"Registration to attend {event} confirmation!"
+    message = f"This is an email to confirm that you registered to attend {event.title} " \
+              f"taking place on {event.start_time} - {event.end_time} at {event.location}. " \
+              "We can't wait to see you."
+    from_email = "paccysan@gmail.com"
+    recipient_list = [request.user.email]
+    send_mail(subject, message, from_email, recipient_list)
     
-    event.attendees.add(member)
-    return Response(EventSerializer(event).data, status=status.HTTP_200_OK)
+    return JsonResponse({'success': True})
 
-
-@ensure_csrf_cookie
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def unregister_from_event(request, id):
-    try:
-        event = Event.objects.get(id=id)
-    except Event.DoesNotExist:
-        return Response({"message": "Event not found"}, status=status.HTTP_404_NOT_FOUND)
-
-    member = request.user
-
-    if member not in event.attendees.all():
-        return Response({"message": "Member not registered for this event"}, status=status.HTTP_400_BAD_REQUEST)
-    
-    event.attendees.remove(member)
-    return Response(EventSerializer(event).data, status=status.HTTP_200_OK)
+@api_view(['POST'])
+@login_required
+def unregister(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    event.attendees.remove(request.user)
+    return JsonResponse({'success': True})

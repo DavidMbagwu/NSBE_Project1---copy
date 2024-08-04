@@ -1,4 +1,41 @@
 {% extends "stage/base.html" %}
-{% block name %}
-<h1>Events</h1>
-{% endblock name %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" type="text/css"  href="{% static 'stage/events.css' %}">
+{% endblock style%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>EVENTS PAGE</title>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+    {% block name %}
+    <div>
+        <h1>Events 📅 </h1>
+    </div>
+
+    <div class="upcome">
+        <a href="#" data-event-type="upcoming" onclick="loadEvents('upcoming')">Upcoming Events</a>
+        <a href="#" data-event-type="past" onclick="loadEvents('past')">Past Events</a>
+    </div>
+
+    <!-- Event List Section -->
+    <div id="events-container"></div>
+
+    <!-- Event Detail Section -->
+    <div id="event-detail">
+        <h2 id="event-title"></h2>
+        <button id="register-btn"></button>
+        <p id="event-location"></p>
+        <p id="event-times"></p>
+        <p id="event-description"></p>
+        <p id="event-attendees"></p>
+    </div>
+    <script src="{% static 'stage/events.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

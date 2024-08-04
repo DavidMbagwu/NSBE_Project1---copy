@@ -1,8 +1,6 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
-from .views import EventsListView, EventDetailView
-
 urlpatterns = [
     path('', views.index, name='stage-index'),
     path('about/', views.about, name='stage-about'),
@@ -31,12 +29,9 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), 
          name='password_reset_complete'),
 
-     # API views
-     path('event/<slug:slug>/', EventDetailView.as_view(), name='stage-event-detail'),
-     path('events/<str:event_type>/', EventsListView.as_view(), name='stage-events'),
-     path('events/<int:id>/register/', views.register_for_event, name='stage-register-for-event'),
-     path('events/<int:id>/unregister/', views.unregister_from_event, name='stage-unregister-from-event'),
-
+     path('events/', views.events, name='stage-events'),
+     path('get-events/<str:event_type>/', views.get_events, name='stage-get-events'),
+     path('get-event/<int:event_id>/', views.get_event, name='stage-get-event'),
+     path('register/<int:event_id>/', views.register, name='stage-register'),
+     path('unregister/<int:event_id>/', views.unregister, name='stage-unregister'),
 ]
-
-# export NODE_OPTIONS=--openssl-legacy-provider

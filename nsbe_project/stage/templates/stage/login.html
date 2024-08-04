@@ -6,8 +6,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'stage/welcomePage.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>NSBE Project1</title>
-    <script>
-    </script>
 
 </head>
 
@@ -29,7 +27,7 @@
 
             <div class = "remember-forgot">
                 <label><input type = "checkbox"> Remember me</label>
-                <a href="#">Forgot password?</a>
+                <a href="{% url 'password_reset' %}">Forgot password?</a>
             </div>
 
             <button type="submit" class = "btn" >Login</button>
