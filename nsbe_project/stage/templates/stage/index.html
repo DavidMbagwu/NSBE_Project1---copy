@@ -3,13 +3,19 @@
 
 {% block style %}
     <link rel="stylesheet" type="text/css"  href="{% static 'stage/index.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 {% endblock style%}
 
 
 {% block name %}
 
+<<<<<<< HEAD
 
 {% if user.is_authenticated %}
+=======
+{% if user.is_authenticated %}
+
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 <h1>Hey, {{ user.first_name }} 👋</h1>
 <div class="content_container">
 
@@ -61,7 +67,7 @@
         <span class="content_left_mid">
                 <div>
                     <h3 style="font-size: 20px; text-decoration: solid; color: rgb(10, 1, 18);">Member ID</h3><br/>
-                    <h1 style="color: rgb(10, 1, 18);">000365940</h1><br/>
+                    <h1 style="color: rgb(10, 1, 18);">{{ user.mcneese_id }}</h1><br/>
 
                 </div>
 
@@ -81,7 +87,7 @@
 
             <div>
                 <h3 style="font-size: 20px; text-decoration: solid; color: rgb(10, 1, 18);">Points Earned</h3><br/>
-                <h1 style="color: rgb(10, 1, 18);">50</h1><br/>
+                <h1 style="color: rgb(10, 1, 18);">{{ user.pointsum }}</h1><br/>
 
             </div>
     </span>
@@ -91,9 +97,7 @@
             <p style="color: rgb(157, 157, 157);">
                 You are considered activated when you have completed the following checklists 
             </p><br/>
-            <p style="color: rgb(157, 157, 157);">
-               Link to Profile page!!!!
-            </p><br/>
+            <br/>
 
             <ul>
                 <li>
@@ -102,6 +106,7 @@
                     </p><br/>
                 </li>
             </ul>
+            <a href="{%  url 'stage-profile' %}">View Profile</a>
 
         </div>
 
@@ -161,6 +166,11 @@
 
 </div>
 
+<<<<<<< HEAD
+=======
+{% else %}
+    Not signed in.
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 {% endif %}
 
 

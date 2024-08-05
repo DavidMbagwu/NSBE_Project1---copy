@@ -1,8 +1,18 @@
 from django.urls import path
 from . import views
+<<<<<<< HEAD
 from django.contrib.auth import views as auth_views
+=======
+
+# Serve static files when in DEBUG mode
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import re_path
+from django.views.static import serve
+
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 urlpatterns = [
-    path('', views.index, name='stage-index'),
+    path('home/', views.index, name='stage-index'),
     path('about/', views.about, name='stage-about'),
     path('signup/', views.signup, name='stage-signup'),
     path('directory/', views.directory, name='stage-directory'),
@@ -11,9 +21,10 @@ urlpatterns = [
     path('points/', views.points, name='stage-points'),
     path('profile/', views.profile, name='stage-profile'),
     path('gallery/', views.gallery, name='stage-gallery'),
-    path('login/', views.login_view, name='stage-login'),
+    path('', views.login_view, name='stage-login'),
     path('logout/', views.logout_view, name='stage-logout'),
     path('adminOnly/', views.adminOnly, name='stage-adminOnly'),
+<<<<<<< HEAD
 
     # Password reset views
     path('password_reset/', 
@@ -34,4 +45,6 @@ urlpatterns = [
      path('get-event/<int:event_id>/', views.get_event, name='stage-get-event'),
      path('register/<int:event_id>/', views.register, name='stage-register'),
      path('unregister/<int:event_id>/', views.unregister, name='stage-unregister'),
+=======
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 ]

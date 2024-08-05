@@ -1,4 +1,5 @@
 from pathlib import Path
+<<<<<<< HEAD
 import environ
 import os
 
@@ -7,6 +8,9 @@ env = environ.Env()
 
 # Reading .env file
 env.read_env(env_file=str(Path(__file__).resolve().parent.parent / ".env"))
+=======
+import os
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +47,7 @@ ROOT_URLCONF = 'nsbe_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,6 +55,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
             ],
         },
     },
@@ -91,6 +97,7 @@ AUTH_USER_MODEL = "stage.Member"
 
 # URLs
 LOGOUT_REDIRECT_URL = "login/"
+<<<<<<< HEAD
 LOGIN_URL = "stage-login"
 
 # Email settings
@@ -102,3 +109,16 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
+=======
+
+AUTHENTICATION_BACKENDS = [
+    'stage.auth_backends.EmailBackend', 
+    'django.contrib.auth.backends.ModelBackend',
+        # Keep the default backend as a fallback
+]
+
+# Create a Media Directory to store media files
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2

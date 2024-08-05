@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" charset="UTF-8" />
+    <link rel="stylesheet" type="text/css"  href="{% static 'stage/nsbe_project.css' %}">
+    <title>NSBE Project1</title>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+
+            <div class="sidebar-header">
+                <span><img src="{% static 'stage/nsbe5g.png' %}" alt="mcneese_icon"></span>
+            </div>
+
+            <ul class="list">
+                <li><div>
+                    <span><img src="{% static 'stage/home_icon.png' %}" alt="home_button"></span>
+                    <a href="{%  url 'stage-index' %}">Home</a>
+                </div></li>
+                <li><div>
+                    <span><img src="{% static 'stage/folder_icon.png' %}" alt="directory_button"></span>
+                    <a href="{%  url 'stage-directory' %}">Directory</a>
+                </div></li>
+                <li><div>
+                    <span><img src="{% static 'stage/ribbon_icon.png' %}" alt="points_button"></span>
+                    <a href="{%  url 'stage-points' %}">Points</a>
+                </div></li>
+                <li><div>
+                    <span><img src="{% static 'stage/calender_icon.png' %}" alt="events_button"></span>
+                    <a href="{%  url 'stage-events' %}">Events</a>
+                </div></li>
+                <li><div>
+                    <span><img src="{% static 'stage/profile_icon.png' %}" alt="profile_button"></span>
+                    <a href="{%  url 'stage-profile' %}">Profile</a>
+                </div></li>
+                
+            </ul>
+
+                <ul class="bottom_list">
+                    <li>
+                        <div>
+                            <span><img src="{% static 'stage/log_out.png' %}" alt="log_out_button"></span>
+                            <a href="{% url 'stage-logout' %}">Log Out</a>
+                        </div>
+                    </li>
+                    <li><a href="{%  url 'stage-help' %}">Help</a></li>
+                    <li><a href="{%  url 'stage-about' %}">About</a></li>
+                </ul>
+
+        </div>
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+            <h2 style="font-size: larger; text-decoration: solid; color: blueviolet;">This is a test: NSBE</h2>
+            
+        </div>
+    </div>
+</body>
+</html>

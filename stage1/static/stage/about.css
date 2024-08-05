@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/*For the Content*/
+.content {
+  background: rgba(243, 245, 249, 0.6);
+  width: 100%;
+  height: 100%;
+  margin-left: 200px;
+  padding: 30px;
+  overflow-y: auto;
+  position: relative;
+  text-align: center;
+}
+
+.content_head {
+  background: rgba(12, 20, 37, 0.39);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.content_head > h1 {
+  font-size: 30px;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+  color: black;
+}
+
+.content_subhead {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.content_container {
+  text-align: left;
+  margin-top: 20px;
+  width: 90%;
+  height: 100%;
+}
+
+.mcneese {
+  text-align: left;
+  margin-top: 20px;
+  width: 90%;
+  height: 100%;
+}
+
+.mcneese > div {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.content_container > div {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.img_cont {
+  width: 750px;
+  height: 450px;
+  position: relative;
+  background: rgba(12, 20, 37, 0.39);
+}
+
+.img_cont > img {
+  width: 700px;
+  height: 400px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-top: 15px;
+  border: 1px solid black;
+}
+
+footer a:hover {
+  padding: 15px;
+  background: #1434A4;
+  border-radius: 20px;
+  color: #FFD700;
+}
