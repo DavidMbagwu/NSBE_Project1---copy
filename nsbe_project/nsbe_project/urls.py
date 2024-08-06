@@ -16,15 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
+from django.views.generic import TemplateView
+=======
 from django.conf import settings
 from django.conf.urls.static import static
 
 from django.views.static import serve
 from django.urls import re_path
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('stage/', include('stage.urls'))
+    path('stage/', include('stage.urls')),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

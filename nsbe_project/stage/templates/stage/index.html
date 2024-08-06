@@ -9,8 +9,13 @@
 
 {% block name %}
 
+<<<<<<< HEAD
+
+{% if user.is_authenticated %}
+=======
 {% if user.is_authenticated %}
 
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 <h1>Hey, {{ user.first_name }} 👋</h1>
 <div class="content_container">
 
@@ -161,8 +166,11 @@
 
 </div>
 
+<<<<<<< HEAD
+=======
 {% else %}
     Not signed in.
+>>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 {% endif %}
 
 
