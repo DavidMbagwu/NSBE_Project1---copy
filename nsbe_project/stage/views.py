@@ -55,19 +55,11 @@ def profile(request):
 
 def login_view(request):
     if request.method == "POST":
-<<<<<<< HEAD
         mcneese_email = request.POST.get("mcneese_email")
         password = request.POST.get("password")
 
         # I made sure username is the same as mcneese_email!!!
         member = authenticate(request, username=mcneese_email, password=password)
-=======
-        email = request.POST["email"]
-        password = request.POST["password"]
-
-        # I made sure username is the same as mcneese_id!!!
-        member = authenticate(request, username=email, password=password)
->>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
 
         if member is not None:
             login(request, member)
