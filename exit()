@@ -1,0 +1,255 @@
+[33mcommit da6a2cfaa4bff70c3a3b51c713a8b4a24b3db419[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Merge: 641a79b 7c5893f
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Tue Aug 6 08:56:13 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit 641a79b36ea2039d8557b62b8baeaa64a4361c69[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Tue Aug 6 08:43:42 2024 -0500
+
+    points color change
+
+[33mcommit 7c5893fd4a9eb180fee1fc9ded621a033af64786[m
+Merge: 7b18736 c1dd760
+Author: sp-muramutsa <125483553+sp-muramutsa@users.noreply.github.com>
+Date:   Mon Aug 5 12:24:24 2024 +0200
+
+    Events
+
+[33mcommit 7b187361ef8f473fda5a924da6a5544fdd7857d2[m
+Author: sp-muramutsa <125483553+sp-muramutsa@users.noreply.github.com>
+Date:   Mon Aug 5 01:27:57 2024 +0200
+
+    Members can now register and unregister successfully.
+
+[33mcommit 83264db5e4cdb53478f074cca1fb7af3cd7728dd[m
+Author: sp-muramutsa <125483553+sp-muramutsa@users.noreply.github.com>
+Date:   Sun Aug 4 00:24:12 2024 +0200
+
+    Changed the events functionality. Now using Django Rest API + Vanilla JS & HTML templates. Upcoming, Past, and Individual events working fine. Working on Register and Unregister functionality
+
+[33mcommit c1dd7608a194f3419fa0f0c931070579be17d7c2[m
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Thu Aug 1 16:22:47 2024 -0500
+
+    changes
+
+[33mcommit d51c1bfe7d633590bbacb81b868020051210f893[m
+Merge: c65e9b0 3fa4128
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Thu Aug 1 16:21:34 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit c65e9b0586545d76ecded5c933d6d50d6dabc56a[m
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Thu Aug 1 16:20:03 2024 -0500
+
+    changes
+
+[33mcommit 3fa4128f27fa04393e73d713807048d57f333204[m
+Merge: 349eac6 10a5b34
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Thu Aug 1 16:17:12 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit 349eac6766c91a09840f14b68ecdb59044cc602d[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Thu Aug 1 16:16:19 2024 -0500
+
+    Point editing
+
+[33mcommit 10a5b3436c6e7ef7ae8c5e2a9bed828228c03b7c[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Thu Aug 1 16:14:46 2024 -0500
+
+    yhh
+
+[33mcommit ad35c213431f6b9405b9a95e1eaab64989b45eb4[m
+Merge: 0639dea 0b848d5
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Thu Aug 1 15:50:12 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit 0639dea9901b78e5586b4aef1cfeafc09a3f2c45[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Thu Aug 1 15:47:52 2024 -0500
+
+    Sigh
+
+[33mcommit 0b848d51133a3e1cb336454dd0db32f2a27c30ec[m
+Merge: a7211ec b125e3c
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Thu Aug 1 15:38:35 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit a7211ecf0943eddbfcf1f54da28d8b41d1d9a529[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Thu Aug 1 15:38:08 2024 -0500
+
+    Userpic update
+
+[33mcommit b125e3c380defa5f20844234401b97c530ebb39a[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Thu Aug 1 09:27:22 2024 -0500
+
+    Leader board ranking and read user-only events
+
+[33mcommit 742c30f2b491fb2a4eb9471e8c2470d4500551a3[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Wed Jul 31 14:33:42 2024 -0500
+
+    Read user Posts
+
+[33mcommit e50c8e526e43edec1453168a955ff37f55eab1bd[m
+Merge: 9db008a aa00a55
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Wed Jul 31 13:37:52 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit 9db008aa866d2679c1456fddc4faa2b953dbb8c0[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Wed Jul 31 13:35:29 2024 -0500
+
+    changes - unimportant
+
+[33mcommit aa00a5569bc72637e212c5749b4915f78cc6f1f7[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Tue Jul 30 19:55:05 2024 -0500
+
+    changes
+
+[33mcommit 57bf262a6d72bfa945fe7b6c6c03e837fa5c8133[m
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Tue Jul 30 19:40:44 2024 -0500
+
+    merged changes
+
+[33mcommit 1560a76e604c22180c7d80e77ad164e1ba8e26f0[m
+Merge: 95e67fe 874c4cb
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Tue Jul 30 19:40:32 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit 95e67fe764456e5a60c66204f0cbf3dade8bf4cb[m
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Tue Jul 30 19:39:05 2024 -0500
+
+    ignored changes
+
+[33mcommit e0f714e8f09c670898acbc6241d346f925afd14e[m
+Author: sp-muramutsa <125483553+sp-muramutsa@users.noreply.github.com>
+Date:   Wed Jul 31 00:12:15 2024 +0200
+
+    Facing CORS error when registering. 403 (Forbidden)
+
+[33mcommit 3df6964f511689cc9a5cdca58cc5e75dfda29951[m
+Author: sp-muramutsa <125483553+sp-muramutsa@users.noreply.github.com>
+Date:   Tue Jul 30 11:01:36 2024 +0200
+
+    Implemented past and upcoming events with React and Material UI
+
+[33mcommit 874c4cb1358f9578acabdeec5d0ccb76b3df91bb[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 16:38:11 2024 -0500
+
+    Final touches for today: Personalization Updates
+
+[33mcommit 4bedf051f3d5b1d1ef019623172cac7dd1dca8f0[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 16:29:32 2024 -0500
+
+    Made more Personalization Settings to the Points page
+
+[33mcommit a393fbbb206de46a9ea41db30703a591bced26d2[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 16:22:41 2024 -0500
+
+    Made more personalization changes
+
+[33mcommit dd5547e6b6d22edb5008974bbb8cc7622cfdbc1e[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 16:00:44 2024 -0500
+
+    Personalized user page for logged in users
+
+[33mcommit cf9c4d8dc9fc3b994f74fc06d7252fefd46dba71[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 11:34:05 2024 -0500
+
+    Sample Profile Pictures
+
+[33mcommit 1ad99398cf33078ee5ac333d8372eebf536ea7d7[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 11:28:21 2024 -0500
+
+    Setup the profile picture configurations and settings
+
+[33mcommit d75fe4a5faa3c25fc0777fa90d6e941c19b5d9aa[m
+Merge: 8873ad8 9748459
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 07:39:46 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit 8873ad873454a0a9604eb519e9a9c4a723534df6[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Mon Jul 29 07:39:39 2024 -0500
+
+    Tried setting up profile picture codeset
+
+[33mcommit 9748459e92c57746c51714349185eee0bafc7fca[m
+Merge: c5e5e54 b918b7d
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Sun Jul 28 22:38:41 2024 -0500
+
+    Merge branch 'main' of https://github.com/DavidMbagwu/NSBE_Project1---copy
+
+[33mcommit c5e5e549863ef40648290eab2f7a48d2cf1be79d[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Sun Jul 28 22:33:01 2024 -0500
+
+    little edit - signup
+
+[33mcommit 19977d49337cfb97065a042820505e90093804e9[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Sun Jul 28 22:22:51 2024 -0500
+
+    SignUp page CSS
+
+[33mcommit b918b7d89e465a1aa9474a3bef44611fd2e8e3ed[m
+Author: bbgdera <bbgdera@gmail.com>
+Date:   Fri Jul 26 16:45:57 2024 -0500
+
+    Deras superuser created
+
+[33mcommit 4a05ce6689a5ab703ad4095cf3238c1163989b3e[m
+Author: DuBaem <dubem.akukwe@gmail.com>
+Date:   Fri Jul 26 14:24:32 2024 -0500
+
+    Created Superuser for Dubem
+
+[33mcommit e3e41d6f40583606e086ca5278dae0b1ed04281c[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Fri Jul 26 14:12:06 2024 -0500
+
+    Fixed Login Authentication Bug
+
+[33mcommit a9d686a2c116f4ae784d89eba80f6224de54b698[m
+Author: sp-muramutsa <125483553+sp-muramutsa@users.noreply.github.com>
+Date:   Fri Jul 26 01:35:47 2024 +0200
+
+    Created event apis
+
+[33mcommit a40fe7f2931fc069b3cc219e55207e0284493895[m
+Author: David Mbagwu <davidmbagwu@gmail.com>
+Date:   Tue Jul 23 17:36:58 2024 -0500
+
+    NSBE_Project Copy
