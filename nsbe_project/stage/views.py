@@ -60,11 +60,12 @@ def login_view(request):
 
         # I made sure username is the same as mcneese_email!!!
         member = authenticate(request, username=mcneese_email, password=password)
-        email = request.POST["email"]
-        password = request.POST["password"]
+        # email = request.POST["email"]
+        # password = request.POST["password"]
 
-        # I made sure username is the same as mcneese_id!!!
-        member = authenticate(request, username=email, password=password)
+        # # I made sure username is the same as mcneese_id!!!
+        # member = authenticate(request, username=email, password=password)
+
 
         if member is not None:
             login(request, member)

@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 from django.urls import re_path
 from django.views.static import serve
 
+
 urlpatterns = [
     path('home/', views.index, name='stage-index'),
     path('about/', views.about, name='stage-about'),
