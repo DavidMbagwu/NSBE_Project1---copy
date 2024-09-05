@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from .models import Event, Member, Post
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.db import IntegrityError, connection
+from django.db import IntegrityError, connection, models
 from django.http import HttpResponseRedirect, JsonResponse
 from .forms import MemberSignUpForm
 
@@ -12,7 +12,16 @@ from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
-    return render(request, 'stage/index.html')
+    user = request.user
+    # Filter posts related to the current user
+
+    member = Member.objects.get(id = user.id)
+    events_attended = member.events_attending.count()
+
+    context = {
+        'events_attended': events_attended ,
+    }
+    return render(request, 'stage/index.html', context)
 
 
 def about(request):
@@ -32,16 +41,23 @@ def points(request):
     # Filter posts related to the current user
 
     member = Member.objects.get(id = user.id)
-    member_posts = member.points.all()
-    events_attended = member.points.count()
+    member_posts = member.events_attending.all()
+    events_attended = member.events_attending.count()
     top_members = Member.objects.all().order_by('-pointsum')[:10]
 
+     # Count the total points for the events attended by the member
+    total_points = member_posts.aggregate(total_points=models.Sum('points'))['total_points'] or 0
+    # Update the pointsum in the database
+    member.pointsum = total_points
+    member.save()
+
     context = {
-        'posts': Post.objects.all(),
+        'posts': Event.objects.all(),
         'members': Member.objects.all(),
         'memberPosts': member_posts,
         'events_attended': events_attended ,
-        'top_members': top_members
+        'top_members': top_members,
+        'total_points': total_points,  # Pass total points to the template
         }
     return render(request, 'stage/points.html', context)
 
@@ -165,6 +181,9 @@ def get_events(request, event_type):
 def register(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     event.attendees.add(request.user)
+
+    # Update user's pointsum
+    # request.user.calculate_pointsum()
 
     # Send confirmation email to the user
     subject = f"Registration to attend {event} confirmation!"

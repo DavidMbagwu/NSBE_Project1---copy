@@ -44,6 +44,10 @@ class Member(AbstractUser):
             raise ValidationError(
                 {"email": "Please Sign up with your McNeese school email"}
             )
+        
+    # def calculate_pointsum(self):
+    #     self.pointsum = self.events_attending.aggregate(total_points=models.Sum('points'))['total_points'] or 0
+    #     self.save()
 
 class Post(models.Model):
     member = models.ManyToManyField(Member, related_name= 'points')
@@ -76,6 +80,7 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     attendees = models.ManyToManyField(Member, related_name='events_attending', blank=True)
+    points = models.IntegerField(default= 0)
 
     objects = EventManager()
 
