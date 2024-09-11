@@ -14,13 +14,8 @@ body {
   align-items: center;
   min-height: 100vh; 
   background: #f3f5f9;
-<<<<<<< HEAD
-  /* background-image: url(MSUHorseRider_blue.png); */
-  background-repeat: no-repeat;
-=======
   background-image: url("./logo/MSUHorseRider_blue.png");
   background-repeat: no-repeat; 
->>>>>>> c1dd7608a194f3419fa0f0c931070579be17d7c2
   background-position: 60% 30%;
   background-size: 500px 500px;
 

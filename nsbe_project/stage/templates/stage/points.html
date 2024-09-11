@@ -13,7 +13,7 @@
         <div class="box1">
             <h2> Total Point Earned</h2>
                     <div class="number">
-                        <p style="color: green;">{{user.pointsum}}</p>
+                        <p style="color: green;">{{ total_points }}</p>
                     </div>
         </div>
         <div class="box2">
@@ -28,14 +28,14 @@
         <div class = "history">
             <h1 style="font-size: larger; text-decoration: solid">  Event History<span><i class='bx bx-history'></i></span></h1>
             <div class = "containevent">
-                {% for member in memberPosts %}
+                {% for event in memberPosts %}
                     <div class="event1">
-                        {% if member.points < 10 %}
-                            <h2 style = "color:green; font-size: 35px"> &nbsp;+{{ post.points }} </h2>
+                        {% if event.points < 10 %}
+                            <h2 style = "color:green; font-size: 35px"> &nbsp;+{{ event.points }} </h2>
                         {% else %}
-                            <h2 style = "color:green; font-size: 35px"> +{{ member.points }} </h2>
+                            <h2 style = "color:green; font-size: 35px"> +{{ event.points }} </h2>
                         {% endif %}
-                        <h2 style = "color:black; font-size: 15px"> {{ member.date_event|date:"F d, Y" }} <br>You attended {{ member.event }} </h2>
+                        <h2 style = "color:black; font-size: 15px"> {{ event.start_time|date:"F d, Y" }} <br>You attended {{ event.title }} </h2>
                        
                     </div>
                 {% endfor %}
