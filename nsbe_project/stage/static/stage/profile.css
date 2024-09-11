@@ -7,6 +7,17 @@
   text-decoration: none;
   font-family: "Josefin Sans", sans-serif;
 }
+
+.welcome_header {
+  background: rgba(243, 245, 249, 0.6);
+  border-radius: 20px;
+  border: 1px solid #dadada;
+  padding: 5px;
+  width: 350px;
+  text-align: center;
+  align-self: center;
+  margin: 0 auto;
+}
 /* .content {
     display: flex;
     align-items: center;

@@ -4,40 +4,58 @@
 {% block style %}
     <link rel="stylesheet" type="text/css"   href="{% static 'stage/profile.css'%}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 {% endblock style%}
 
 {% block name %}
-<form action =""></form>
-    <h1>Profile</h1><br/>
-    <div class = "input-box">
-        <h2>{{ user.first_name }}  {{  user.last_name }}</h2><br/>
-        <label for="email">Email*</label>
-        <input type="text" default value="{{ user.email }}" name = "email" ><br/>
+    {% if user.is_authenticated %}
+        <h1>Profile Page 👥</h1><br/>
+        <method="post" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" default value="{{ user.email }}" class="form-control" style="width: 250px" id="email" placeholder="Enter email" name="email">
+                <br/>
+                <button type="submit" class="btn btn-info">Update Email</button>
+            </div>
+            <br>
 
-{% if user.is_authenticated %}
-<h2>{{ user.first_name }}  {{  user.last_name }}</h2><br/>
-    <p> Email: {{ user.email }}</p><br/>
-    <p> ID Number: {{ user.mcneese_id }}</p><br/>
-    <p> LinkedIn: {{ user.linkedin }}</p><br/>
-    <p> Phone Number: {{ user.phone }}</p><br/>
-    <p> Profile Image:</p>
-<!--    <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/> -->   
-    <br/>
-    <p> Major: {{ user.major }}</p><br/><br/><hr/><br/>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" style="width: 250px"id="pwd" placeholder="Enter password..." name="pwd">
+            <br/>
+            <button type="submit" class="btn btn-info">Update Password</button>
+        </div>
+        <br>
 
-<!--
-{%  for item in all %}
-    <h2>{{ item.first_name }}  {{  item.last_name }}</h2><br/>
-    <p> Email: {{ item.email }}</p><br/>
-    <p> ID Number: {{ item.mcneese_id }}</p><br/>
-    <p> LinkedIn: {{ item.linkedin }}</p><br/>
-    <p> Phone Number: {{ item.phone }}</p><br/>
-    <p> Profile Image:</p>
-    <img src="{{ MEDIA_URL }}{{ item.avatar }}" alt="{{ item.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/>   
-    <br/>
-    <p> Major: {{ item.major }}</p><br/><br/><hr/><br/>
-{% endfor %}
+        <div class="form-group">
+            <label for="email">LinkedIn:</label>
+            <input type="email" default value="{{ user.linkedin }}" class="form-control" style="width: 250px" id="email" placeholder="Enter email" name="email">
+            <br/>
+            <button type="submit" class="btn btn-info">Update LinkedIn</button>
+        </div>
+        <br>
 
--->
+            <p> ID Number: {{ user.mcneese_id }}</p><br/>
+            <p> Phone Number: {{ user.phone }}</p>
+            <button type="reset" class="btn btn-info">Add</button><br/>
+            <br/><p> GitHub: {{ user.github }}</p>
+            <button type="reset" class="btn btn-info">Add</button><br/>
+            <br/><p> Profile Image:</p>
+        <!--    <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.avatar }}" width="150" height="150" style="border-radius: 50px;"><br/> -->
+            <button type="reset" class="btn btn-info">Update</button>
+            <br/>
+            <br/><p> Major: {{ user.major }}</p>
+            <button type="reset" class="btn btn-info">Update</button>
+            <br/><br/><hr/><br/>
+
+
+    </form>
+
+    {% endif %}
 
 {% endblock name %}
