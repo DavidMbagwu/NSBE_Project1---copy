@@ -92,7 +92,7 @@ def login_view(request):
             return render(
                 request,
                 "stage/login.html",
-                {"message": "Invalid McNeese ID and/or password."},
+                #{"message": "Invalid McNeese ID and/or password."},
             )
 
     else:
